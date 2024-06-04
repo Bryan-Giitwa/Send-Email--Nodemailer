@@ -3,12 +3,14 @@ import axios from "axios";
 
 function App() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   const sendEmail = async (e) => {
     e.preventDefault();
 
     const data = {
       email,
+      name,
     };
     try {
       const response = await axios.post(
@@ -28,6 +30,13 @@ function App() {
       <div className="--width-500px --card --p --bg-light">
         <form className="--form-control" onSubmit={sendEmail}>
           <h1>MERN STACK EMAIL TUTORIAL </h1>
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
           <input
             type="email"
             placeholder="Email"
